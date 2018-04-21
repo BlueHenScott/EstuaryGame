@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -31,13 +32,15 @@ public class TitleView extends JPanel{
 		JPanel buttonPanel = new JPanel(new GridLayout(1,2,4,4));
 	    buttonPanel.add(startButton);	
 			
+		JPanel newPanel = new JPanel(new GridBagLayout());
+		JLabel label = new JLabel("Estuary Extravaganza");
+		newPanel.add(label);
 		// Set up the JFrame
 		
 		frame = new JFrame();
-		frame.setBackground(Color.blue);
-		frame.getContentPane().add(this, BorderLayout.CENTER);
+		frame.setBackground(Color.CYAN);
 		frame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
-		frame.getContentPane().setBackground(Color.blue);
+		frame.getContentPane().add(newPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    		frame.setSize(viewWidth, viewHeight);
 		frame.setVisible(true);
