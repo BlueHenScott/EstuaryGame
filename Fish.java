@@ -18,18 +18,22 @@ import javax.imageio.ImageIO;
 public class Fish {
 	int xloc, yloc;
 	int imageWidth, imageHeight;
+	int xSpeed;
+	int ySpeed;
 	
 	Direction direction;
 	FishType species;
 	
 	
-	public Fish(FishType species, int xloc, int yloc, Direction direction, int iWidth, int iHeight) {
+	public Fish(FishType species, int xloc, int yloc, Direction direction, int iWidth, int iHeight, int xSpeed, int ySpeed) {
 		this.species = species;
 		this.xloc = xloc;
 		this.yloc = yloc; 
 		this.direction = direction;
 		this.imageWidth = iWidth;
 		this.imageHeight = iHeight;
+		this.xSpeed = xSpeed;
+		this.ySpeed = ySpeed;
 		
 	}
 	
@@ -38,10 +42,12 @@ public class Fish {
 		Random r = new Random();
 		int iWidth = (int) (type.getSize() * FishImages.getImage(type).getWidth());
 		int iHeight = (int) (type.getSize() * FishImages.getImage(type).getHeight());
+		int xSpeed = (int) (type.getSpeed() * FishImages.getImage(type).getWidth());
+		int ySpeed = (int) (type.getSpeed() * FishImages.getImage(type).getHeight());
 		int x = r.nextInt(frameWidth - iWidth);
 		int y = r.nextInt(frameHeight-iHeight);
 		Direction dir = Direction.values()[r.nextInt(Direction.values().length)];
-		return new Fish(type, x, y, dir, iWidth, iHeight);	
+		return new Fish(type, x, y, dir, iWidth, iHeight, xSpeed, ySpeed);	
 	}
 	
 	
@@ -90,32 +96,32 @@ public class Fish {
 	public void move() {
 		switch(direction) {
 			case NORTH: {
-				yloc--;
+				yloc -= ySpeed;
 			}
 			case SOUTH: {
-				yloc++;
+				yloc+= xSpeed;
 			}
 			case EAST: {
-				xloc++;
+				xloc+= xSpeed;
 			}
 			case WEST: {
-				xloc--;
+				xloc-= xSpeed;
 			}
 			case NORTHEAST: {
-				xloc++;
-				yloc--;
+				xloc+=xSpeed;
+				yloc-=ySpeed;
 			}
 			case NORTHWEST: {
-				xloc--;
-				yloc--;
+				xloc-=xSpeed;
+				yloc-=ySpeed;
 			}
 			case SOUTHEAST: {
-				xloc++;
-				yloc++;
+				xloc+=xSpeed;
+				yloc+=ySpeed;
 			}
 			case SOUTHWEST: {
-				xloc--;
-				yloc++;
+				xloc-=xSpeed;
+				yloc+= ySpeed;
 			}
 		}
 	}
