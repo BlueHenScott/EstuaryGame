@@ -7,66 +7,57 @@
  * Every fish has random movement.
  * 
  */
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 public class Fish {
 	int xloc, yloc;
-	int xSpeed, ySpeed;
-	int size;
+	int imageWidth, imageHeight;
+	
 	Direction direction;
 	FishType species;
-	int imageWidth;
-	int imageHeight;
-	int frameWidth;
-	int frameHeight;
-	int rightBound;
-	int bottomBound;
+	BufferedImage image;
 	
-	public Fish(int xloc, int yloc, int xSpeed, int ySpeed, int size, Direction direction) {
+	
+	
+	public Fish(FishType species, int xloc, int yloc, Direction direction) {
+		this.species = species;
 		this.xloc = xloc;
 		this.yloc = yloc; 
-		this.xSpeed = xSpeed;
-		this.ySpeed = ySpeed;
-		this.size = size;
 		this.direction = direction;
 	}
-	private void findBounds(int imageWidth, int imageHeight){
-		rightBound = frameWidth - imageWidth;
-		bottomBound = frameHeight - imageHeight;
+	
+	
+	
+	public static Fish makeRandomFish(FishType type, int xBound, int yBound){
+		Random r = new Random();
+		int x = r.nextInt(xBound);
+		int y = r.nextInt(yBound);
+		Direction dir = Direction.values()[r.nextInt(Direction.values().length)];
+		return new Fish(type, x, y, dir);	
 	}
 	
-	// Setters
-	public void setImage(int w,int h){
-		imageWidth = w;
-		imageHeight = h;
-
-	}
-	public void setFrame(int w, int h){
-		frameWidth = w;
-		frameHeight = h;
-	}
+	
+	
+	
+	
+	
+	
 	// Getters
-	public int getWidth(){
-		return imageWidth;
-	}
-	public int getHeight(){
-		return imageHeight;
-	}
+	
 	public int getXLoc() {
 		return xloc;
 	}
 	public int getYLoc() {
 		return yloc;
 	}
-	public int getXSpeed() {
-		return xSpeed;
-	}
-	public int getYSpeed() {
-		return ySpeed;
-	}
-	public int getSize() {
-		return size;
-	}
+	
+	
 	public Direction getDirection() {
 		return direction;
 	}
@@ -74,8 +65,10 @@ public class Fish {
 		return species;
 	}
 	
+	//
+	
 	// randomly generates int from 0-7 which determines direction
-	public void makeRandom() {
+	public void randomizeDirection() {
 		Random r = new Random();
 		int randomDir = r.nextInt(8);
 		direction = Direction.values()[randomDir];
@@ -123,4 +116,33 @@ public class Fish {
 		}
 	}
 	
+}
+
+class FishImages{
+	static ArrayList<BufferedImage> fishImages = new ArrayList<>();
+	
+	public void importImages(){
+		for (FishType ft: FishType.values()){
+			String imgLoc = "images/fish/" + ft.getName() + ".png";
+			BufferedImage img = createImage(imgLoc);
+			fishImages.add(img);
+		}
+	}
+	
+	private BufferedImage createImage(String loc){
+    	BufferedImage bufferedImage;
+    	try {
+    		bufferedImage = ImageIO.read(new File(loc));
+    		return bufferedImage;
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	return null;
+    	
+    }
+	
+	public static BufferedImage getImage(FishType ft){
+		return fishImages.get(ft.ordinal());
+		
+	}
 }

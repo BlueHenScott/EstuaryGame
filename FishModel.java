@@ -1,17 +1,28 @@
+import java.util.ArrayList;
 
 public class FishModel {
-	//Collection<Fish> fishes;
-	int frameWidth;
-	int frameHeight;
-	int imageWidth;
-	int imageHeight;
+	ArrayList<Fish> fishes;
+	int frameWidth = 1500;
+	int frameHeight = 900;
 	int netX = 0;
 	int netY = 0;
+	int topBound = 0;
+	int leftBound = 0;
 	
-	final int leftBound = 0;
-	int rightBound;
-	final int topBound = 0;
-	int bottomBound;
+	
+	
+	private void populateFish(){
+		 for (FishType ft: FishType.values()){
+			 
+			 Fish.makeRandomFish(ft, bleh, bleh);
+		 }
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 }
