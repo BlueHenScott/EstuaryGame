@@ -21,26 +21,30 @@ public class Fish {
 	
 	Direction direction;
 	FishType species;
-	BufferedImage image;
 	
 	
-	
-	public Fish(FishType species, int xloc, int yloc, Direction direction) {
+	public Fish(FishType species, int xloc, int yloc, Direction direction, int iWidth, int iHeight) {
 		this.species = species;
 		this.xloc = xloc;
 		this.yloc = yloc; 
 		this.direction = direction;
+		this.imageWidth = iWidth;
+		this.imageHeight = iHeight;
+		
 	}
 	
 	
-	
-	public static Fish makeRandomFish(FishType type, int xBound, int yBound){
+	public static Fish makeRandomFish(FishType type, int frameWidth, int frameHeight){
 		Random r = new Random();
-		int x = r.nextInt(xBound);
-		int y = r.nextInt(yBound);
+		int iWidth = (int) (type.getSize() * FishImages.getImage(type).getWidth());
+		int iHeight = (int) (type.getSize() * FishImages.getImage(type).getHeight());
+		int x = r.nextInt(frameWidth - iWidth);
+		int y = r.nextInt(frameHeight-iHeight);
 		Direction dir = Direction.values()[r.nextInt(Direction.values().length)];
-		return new Fish(type, x, y, dir);	
+		return new Fish(type, x, y, dir, iWidth, iHeight);	
 	}
+	
+	
 	
 	
 	
