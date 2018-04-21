@@ -15,6 +15,12 @@ public class Fish {
 	int size;
 	Direction direction;
 	FishType species;
+	int imageWidth;
+	int imageHeight;
+	int frameWidth;
+	int frameHeight;
+	int rightBound;
+	int bottomBound;
 	
 	public Fish(int xloc, int yloc, int xSpeed, int ySpeed, int size, Direction direction) {
 		this.xloc = xloc;
@@ -24,8 +30,28 @@ public class Fish {
 		this.size = size;
 		this.direction = direction;
 	}
+	private void findBounds(int imageWidth, int imageHeight){
+		rightBound = frameWidth - imageWidth;
+		bottomBound = frameHeight - imageHeight;
+	}
 	
+	// Setters
+	public void setImage(int w,int h){
+		imageWidth = w;
+		imageHeight = h;
+
+	}
+	public void setFrame(int w, int h){
+		frameWidth = w;
+		frameHeight = h;
+	}
 	// Getters
+	public int getWidth(){
+		return imageWidth;
+	}
+	public int getHeight(){
+		return imageHeight;
+	}
 	public int getXLoc() {
 		return xloc;
 	}
@@ -52,16 +78,7 @@ public class Fish {
 	public void makeRandom() {
 		Random r = new Random();
 		int randomDir = r.nextInt(8);
-		switch(randomDir) {
-			case 0: direction = Direction.NORTH;
-			case 1: direction = Direction.SOUTH;
-			case 2: direction = Direction.EAST;
-			case 3: direction = Direction.WEST;
-			case 4: direction = Direction.NORTHEAST;
-			case 5: direction = Direction.NORTHWEST;
-			case 6: direction = Direction.SOUTHEAST;
-			case 7: direction = Direction.SOUTHWEST;
-		}
+		direction = Direction.values()[randomDir];
 	}
 	
 	/* to be updated once there are more FishTypes; limits where species can move
