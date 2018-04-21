@@ -9,8 +9,11 @@ public class MGModel {
 	ArrayList<Card> animals; 	
 	ArrayList<Card> environment;
 	
-	public MGModel() {
-		
+	public MGModel(int width, int height, ArrayList<Card> a, ArrayList<Card> e) {
+		frameWidth = width; 
+		frameHeight = height;
+		animals = a; 
+		environment = e;
 		
 	}
 	
@@ -23,6 +26,16 @@ public class MGModel {
 		}
 		
 	}
+	
+	public void flip(Card a) {
+		a.setFlipped(true);
+	}
+	
+	public void pair(Card a) {
+		a.setPaired(true);
+	}
+	
+	
 	
 	
 	
