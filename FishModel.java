@@ -64,10 +64,7 @@ public class FishModel {
 		return fishes;
 	}
 
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public int getPlayerX() {
 		// TODO Auto-generated method stub
