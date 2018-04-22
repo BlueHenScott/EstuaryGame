@@ -51,12 +51,13 @@ public class FishView extends JPanel{
 		// Add this game to the jFrame and focus on it
 		frame.setBackground(Color.white);
 		frame.getContentPane().add(this);
+		frame.getContentPane().setBackground(Color.red);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(viewWidth, viewHeight);
 		frame.setVisible(true);
 		frame.setFocusable(true);
 		// Set focus on the panel
-		this.requestFocus();
+		//this.requestFocus();
 	}
 	
 	// Update is called on ever timer tick. 
@@ -67,19 +68,20 @@ public class FishView extends JPanel{
 		// Receive any changes made to the fish
 		fishList = fish;
 		// Repaint the frame with the new information
-		frame.repaint();
+		repaint();
 	}
 	
 	protected void paintComponent(Graphics g) {
 
 		// Draw the background image
-		g.drawImage(background, 0, 0, null, this);
+		g.drawImage(background, 0, 0, Color.black, this);
 		// Draw the net
-		g.drawImage(net, playerX, playerY, transparent, this);
+		g.drawImage(net, playerX, playerY, Color.black, this);
 		// Draw each fish in the list
 		for(Fish f: fishList) {
-			g.drawImage(FishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), transparent, this);
+			g.drawImage(FishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
 		}
+		
 	}
 	
 	// Reads in images
@@ -97,7 +99,6 @@ public class FishView extends JPanel{
 	// Adds the key listener to our jpanel.
 	public void addKeyInput(KeyListener kL) {
 		this.addKeyListener(kL);
-		System.out.println("KeyListenerAdded");
 	}
 	
 	public int getWidth() {

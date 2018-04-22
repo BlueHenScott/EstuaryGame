@@ -43,6 +43,7 @@ public class FishController {
 				view.update(model.getFishList(), model.getNetX(), model.getNetY());
 			}
 		};
+		start();
 	}
 	// Start the cycle
 	public void start() {
