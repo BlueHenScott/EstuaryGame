@@ -8,24 +8,35 @@ import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class FishController {
-	// Create instances of Model and View
+	// Instances of Model and View for Fish
 	private FishModel model;
 	private FishView view;
 	
-	private int drawDelay = 50;
+	// Delay in the drawing
+	private int drawDelay = 30;
+	
+	// Action to be completed in the timer
 	private Action drawAction;
 	
 	
 	public FishController() {
+		/*
+		 * TO-DO
+		 * grab frame from titleScreen
+		 */
+		
 		JFrame frame;
 		frame = new JFrame();
 		
+		// Initialize model and view, passing in our frame
 		model = new FishModel();
 		view = new FishView(frame);
-		
+		// Add the keyListener to View
 		view.addKeyInput(new KeyInput());
 		
+		// Create the action that occurs every cycle
 		drawAction = new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 				model.update();
@@ -33,7 +44,7 @@ public class FishController {
 			}
 		};
 	}
-	
+	// Start the cycle
 	public void start() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,6 +53,7 @@ public class FishController {
 			}
 		});
 	}
+	// Listens for keyInput
 	class KeyInput implements KeyListener{
 		@Override
 		public void keyPressed(KeyEvent keyEvent) {
@@ -53,6 +65,7 @@ public class FishController {
 		}
 		@Override
 		public void keyTyped(KeyEvent keyEvent) {
+			// Key Typed should allow for the keys to be held down.
 			int code = keyEvent.getKeyCode();
 			switch (code) {
 				case 38:
@@ -67,7 +80,6 @@ public class FishController {
 				case 40:
 					model.moveDown();
 					break;
-		
 				default:
 					break;
 			}
