@@ -2,14 +2,17 @@ import java.util.ArrayList;
 
 public class FishModel {
 	ArrayList<Fish> fishes;
-	int frameWidth = 1500;
-	int frameHeight = 900;
+	int frameWidth;
+	int frameHeight;
 	int netX = 0;
 	int netY = 0;
 	int topBound = 0;
 	int leftBound = 0;
 	
-	
+	public FishModel(int width, int height){
+		this.frameWidth = width;
+		this.frameHeight = height;
+	}
 	
 	private void populateFish(){
 		 for (FishType ft: FishType.values()){

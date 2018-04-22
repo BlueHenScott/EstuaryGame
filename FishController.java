@@ -40,7 +40,7 @@ public class FishController {
 		drawAction = new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 				model.update();
-				view.update(model.getFishList(), model.getNetX(), model.getNetY());
+				view.update(model.getFishList(), model.getPlayerX(), model.getPlayerY());
 			}
 		};
 	}
