@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class FishView extends JPanel{	
 	// Constants for View Size
-	private int viewWidth;
-	private int viewHeight;
+	private int viewWidth = 1500;
+	private int viewHeight = 900;
 	
 	JFrame frame;
 	
@@ -36,8 +36,8 @@ public class FishView extends JPanel{
 	public FishView(JFrame f) {
 		frame = f;
 		
-		viewWidth = frame.getWidth();
-		viewHeight = frame.getHeight();
+		//viewWidth = frame.getWidth();
+		//viewHeight = frame.getHeight();
 		
 		// Player net image;
 		String playerImageLoc = "images/fish/net.png";
@@ -71,6 +71,7 @@ public class FishView extends JPanel{
 	}
 	
 	protected void paintComponent(Graphics g) {
+
 		// Draw the background image
 		g.drawImage(background, 0, 0, null, this);
 		// Draw the net
@@ -104,5 +105,34 @@ public class FishView extends JPanel{
 	}
 	public int getHeight() {
 		return viewHeight;
+	}
+}
+
+class FishImages{
+	static ArrayList<BufferedImage> fishImages = new ArrayList<>();
+	
+	public void importImages(){
+		for (FishType ft: FishType.values()){
+			String imgLoc = "images/fish/" + ft.getName() + ".png";
+			BufferedImage img = createImage(imgLoc);
+			fishImages.add(img);
+		}
+	}
+	
+	private BufferedImage createImage(String loc){
+    	BufferedImage bufferedImage;
+    	try {
+    		bufferedImage = ImageIO.read(new File(loc));
+    		return bufferedImage;
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	return null;
+    	
+    }
+	
+	public static BufferedImage getImage(FishType ft){
+		return fishImages.get(ft.ordinal());
+		
 	}
 }
