@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class FishView extends JPanel{	
 	// Constants for View Size
-	private int viewWidth = 1500;
-	private int viewHeight = 900;
+	private int viewWidth = 800;
+	private int viewHeight = 500;
 	
 	JFrame frame;
 	
