@@ -33,8 +33,12 @@ public class FishModel {
 	
 	
 	public void update(){
+		
+		
+		
 		for (Fish f: fishes){
 			moveFish(f);
+			
 		}
 	}
 	
