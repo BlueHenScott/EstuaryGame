@@ -13,9 +13,12 @@ public class FishModel {
 	
 	private void populateFish(){
 		 for (FishType ft: FishType.values()){
-			 
-			 Fish.makeRandomFish(ft, bleh, bleh);
+			 Fish.makeRandomFish(ft, frameWidth, frameHeight);
 		 }
+	}
+	
+	private void moveFish(){
+		
 	}
 	
 	
