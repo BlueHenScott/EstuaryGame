@@ -3,11 +3,23 @@ import java.awt.image.BufferedImage;
 
 public class Card {
 	
-	String name;
+	public String name;
 	public Card target;
 	public boolean isFlipped;
 	public boolean isPaired;
 	public Image img;
+	public Card(String n, Card t) {
+		name = n;
+		target = t;
+		isFlipped = false;
+		isPaired = false;
+	}
+	public Card(String n) {
+		name = n;
+		//target = t;
+		isFlipped = false;
+		isPaired = false;
+	}
 	
 	public boolean isFlipped() {
 		return isFlipped;
@@ -40,5 +52,13 @@ public class Card {
 		// TODO Auto-generated method stub
 		return target;
 	}
+	public void setTarget(Card t) {
+		// TODO Auto-generated method stub
+		target = t;
+	}
+	public String toString() { 
+		return name;
+	}
+	
 
 }
