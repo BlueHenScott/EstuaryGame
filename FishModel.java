@@ -9,7 +9,7 @@ public class FishModel {
 	int topBound = 0;
 	int leftBound = 0;
 	
-	private int velocity = 5;
+	private int velocity = 20;
 	
 	public FishModel(int width, int height){
 		this.frameWidth = width;
