@@ -31,8 +31,8 @@ public class FishController {
 		frame = new JFrame();
 		
 		// Initialize model and view, passing in our frame
-		model = new FishModel();
 		view = new FishView(frame);
+		model = new FishModel(view.getWidth(), view.getHeight());
 		// Add the keyListener to View
 		view.addKeyInput(new KeyInput());
 		
@@ -40,7 +40,7 @@ public class FishController {
 		drawAction = new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 				model.update();
-				view.update(model.getFishList(), model.getPlayerX(), model.getPlayerY());
+				view.update(model.getFishList(), model.getNetX(), model.getNetY());
 			}
 		};
 	}
