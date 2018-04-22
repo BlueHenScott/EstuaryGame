@@ -58,15 +58,6 @@ public class FishController {
 	class KeyInput implements KeyListener{
 		@Override
 		public void keyPressed(KeyEvent keyEvent) {
-						
-		}
-		@Override
-		public void keyReleased(KeyEvent keyEvent) {
-			
-		}
-		@Override
-		public void keyTyped(KeyEvent keyEvent) {
-			// Key Typed should allow for the keys to be held down.
 			int code = keyEvent.getKeyCode();
 			switch (code) {
 				case 38:
@@ -84,6 +75,17 @@ public class FishController {
 				default:
 					break;
 			}
+						
+		}
+		@Override
+		public void keyReleased(KeyEvent keyEvent) {
+			
+		}
+		@Override
+		public void keyTyped(KeyEvent keyEvent) {
+			
+			// Key Typed should allow for the keys to be held down.
+			
 		
 		}
 	}
