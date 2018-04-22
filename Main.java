@@ -6,4 +6,5 @@ public class Main extends JPanel {
 		// Create and start a new Controller
 		TitleController con = new TitleController();
 	}
+
 }

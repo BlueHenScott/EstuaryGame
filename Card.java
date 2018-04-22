@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 public class Card {
@@ -6,7 +7,7 @@ public class Card {
 	public Card target;
 	public boolean isFlipped;
 	public boolean isPaired;
-	public BufferedImage img;
+	public Image img;
 	
 	public boolean isFlipped() {
 		return isFlipped;
@@ -34,6 +35,10 @@ public class Card {
 		}
 		else return false;
 		
+	}
+	public Card getTarget() {
+		// TODO Auto-generated method stub
+		return target;
 	}
 
 }
