@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class MGController {
@@ -11,9 +12,9 @@ public class MGController {
 	private MGView view;
 	private boolean isStarted = false;
 	
-	public MGController(){
+	public MGController(JFrame frame){
 		// Create new instances of Model and View
-		view = new MGView();
+		view = new MGView(frame);
 		model = new MGModel(view.getWidth(), view.getHeight()); //view.getImageWidth(), view.getImageHeight());
 		
 		view.addClickListener(new ClickListener());

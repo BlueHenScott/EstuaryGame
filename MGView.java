@@ -24,7 +24,7 @@ public class MGView extends JPanel{
 	ArrayList<ImageIcon> ecards = new ArrayList<ImageIcon>(); //environment cards
 	ArrayList<ImageIcon> acards = new ArrayList<ImageIcon>(); //animals cards
 	
-	public MGView() {
+	public MGView(JFrame f) {
 		try {
 			addIcons();
 			System.out.println("items adde");
@@ -40,7 +40,9 @@ public class MGView extends JPanel{
 		apanel.setVisible(true);
 		epanel.setVisible(true);
 		
-		frame = new JFrame();
+		frame = f;
+		f.getContentPane().removeAll();
+		
 		frame.setBackground(Color.gray);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    		frame.setSize(viewWidth, viewHeight);

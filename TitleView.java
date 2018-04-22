@@ -27,8 +27,8 @@ public class TitleView extends JPanel{
 	private JFrame frame;
 	private JButton startButton = new JButton("Start");
 	
-	public TitleView() {
-
+	public TitleView(JFrame f) {
+	
 		JPanel buttonPanel = new JPanel(new GridLayout(1,2,4,4));
 	    buttonPanel.add(startButton);	
 			
@@ -37,7 +37,9 @@ public class TitleView extends JPanel{
 		newPanel.add(label);
 		// Set up the JFrame
 		
-		frame = new JFrame();
+		frame = f;
+		frame.getContentPane().removeAll();
+		
 		frame.getContentPane().setBackground(Color.CYAN);
 		frame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
 		frame.getContentPane().add(newPanel);
