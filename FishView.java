@@ -62,7 +62,7 @@ public class FishView extends JPanel{
 		frame.setVisible(true);
 		frame.setFocusable(true);
 		// Set focus on the panel
-		//this.requestFocus();
+		this.requestFocus();
 	}
 	
 	// Update is called on ever timer tick. 
