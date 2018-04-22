@@ -54,8 +54,46 @@ public class Fish {
 	
 	
 	
-	
-	
+	public int yIncriment(){
+		switch (direction){
+			case NORTH: 
+				return -1;
+			case NORTHEAST:
+				return -1;
+			case EAST:
+				return 0;
+			case SOUTHEAST:
+				return 1;
+			case SOUTH:
+				return 1;
+			case SOUTHWEST:
+				return 1;
+			case WEST:
+				return 0;
+			default: //NORTHWEST
+				return -1;
+		}
+	}
+    public int xIncriment(){
+		switch (direction){
+			case NORTH: 
+				return 0;
+			case NORTHEAST:
+				return 1;
+			case EAST:
+				return 1;
+			case SOUTHEAST:
+				return 1;
+			case SOUTH:
+				return 0;
+			case SOUTHWEST:
+				return -1;
+			case WEST:
+				return -1;
+			default: //NORTHWEST
+				return -1;
+		}
+	}
 	
 	
 	// Getters
@@ -91,6 +129,42 @@ public class Fish {
 		}
 	}
 	*/
+	
+	
+	
+	public void flipDirection(Direction flip){
+    	switch (direction){
+			case NORTH: 
+				direction = Direction.SOUTH;
+				break;
+			case NORTHEAST:
+				if (flip == Direction.EAST) direction = Direction.NORTHWEST;
+				else direction = Direction.SOUTHEAST;
+				break;
+			case EAST:
+				direction = Direction.WEST;
+				break;
+			case SOUTHEAST:
+				if (flip == Direction.EAST) direction = Direction.SOUTHWEST;
+				else direction = Direction.NORTHEAST;
+				break;
+			case SOUTH:
+				direction = Direction.NORTH;
+				break;
+			case SOUTHWEST:
+				if (flip == Direction.WEST) direction = Direction.SOUTHEAST;
+				else direction = Direction.NORTHWEST;
+				break;
+			case WEST:
+				direction = Direction.EAST;
+				break;
+			default: //NORTHWEST
+				if (flip == Direction.WEST) direction = Direction.NORTHEAST;
+				else direction = Direction.SOUTHWEST;
+				break;
+    	}
+    }
+	
 	
 	// increments and decrements xloc and yloc to move in specified direction
 	public void move() {

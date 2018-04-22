@@ -17,8 +17,47 @@ public class FishModel {
 		 }
 	}
 	
-	private void moveFish(){
-		
+	private int bottomBound(Fish fish){
+		return frameHeight - fish.imageHeight;
+	}
+	private int rightBound(Fish fish){
+		return frameWidth - fish.imageWidth;
+	}
+	
+	
+	public void update(){
+		for (Fish f: fishes){
+			moveFish(f);
+		}
+	}
+	
+	
+	private void moveFish(Fish fish){
+		int newX = fish.xloc + fish.xIncriment() * fish.xSpeed;
+		int newY = fish.yloc + fish.yIncriment() * fish.ySpeed;
+	
+		if (newX < leftBound) {
+			newX = leftBound;
+			fish.flipDirection(Direction.WEST);
+
+		}
+		if (newX > rightBound( fish)){
+			newX = rightBound( fish);
+			fish.flipDirection(Direction.EAST);
+
+		}
+		if (newY < topBound){
+			newY = topBound;
+			fish.flipDirection(Direction.NORTH);
+
+		}
+		if (newY > bottomBound(fish)){
+			newY = bottomBound(fish);
+			fish.flipDirection(Direction.SOUTH);
+
+		}
+		fish.xloc = newX;
+		fish.yloc = newY;
 	}
 	
 	
