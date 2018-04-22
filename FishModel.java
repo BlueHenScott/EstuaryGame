@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class FishModel {
-	ArrayList<Fish> fishes;
+	ArrayList<Fish> fishes = new ArrayList<>();
 	int frameWidth;
 	int frameHeight;
 	int netX = 0;
@@ -14,11 +14,13 @@ public class FishModel {
 	public FishModel(int width, int height){
 		this.frameWidth = width;
 		this.frameHeight = height;
+		populateFish();
 	}
 	
 	private void populateFish(){
 		 for (FishType ft: FishType.values()){
-			 Fish.makeRandomFish(ft, frameWidth, frameHeight);
+			 //System.out.println(Fish.makeRandomFish(ft, frameWidth, frameHeight));
+			 fishes.add(Fish.makeRandomFish(ft, frameWidth, frameHeight));
 		 }
 	}
 	

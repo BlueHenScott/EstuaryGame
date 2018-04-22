@@ -44,8 +44,8 @@ public class Fish {
 		int iHeight = (int) (type.getSize() * FishImages.getImage(type).getHeight());
 		int xSpeed = (int) (type.getSpeed() * FishImages.getImage(type).getWidth());
 		int ySpeed = (int) (type.getSpeed() * FishImages.getImage(type).getHeight());
-		int x = r.nextInt(frameWidth - iWidth);
-		int y = r.nextInt(frameHeight-iHeight);
+		int x = r.nextInt(Math.abs(frameWidth - iWidth));
+		int y = r.nextInt(Math.abs(frameHeight-iHeight));
 		Direction dir = Direction.values()[r.nextInt(Direction.values().length)];
 		return new Fish(type, x, y, dir, iWidth, iHeight, xSpeed, ySpeed);	
 	}

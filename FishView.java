@@ -40,7 +40,7 @@ public class FishView extends JPanel{
 		viewHeight = frame.getHeight();
 		
 		// Player net image;
-		String playerImageLoc = "images/fishgame/net.png";
+		String playerImageLoc = "images/fish/net.png";
 		String backgroundLoc = "images/fish/background.png";
 		net = createImage(playerImageLoc);
 		background = createImage(backgroundLoc);
