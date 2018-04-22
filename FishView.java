@@ -69,7 +69,6 @@ public class FishView extends JPanel{
 		fishList = fish;
 		// Repaint the frame with the new information
 		repaint();
-		System.out.println("Called paint");
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -83,7 +82,6 @@ public class FishView extends JPanel{
 			g.drawImage(FishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
 		}
 		
-		System.out.println("Paint");
 	}
 	
 	// Reads in images
@@ -101,7 +99,6 @@ public class FishView extends JPanel{
 	// Adds the key listener to our jpanel.
 	public void addKeyInput(KeyListener kL) {
 		this.addKeyListener(kL);
-		System.out.println("KeyListenerAdded");
 	}
 	
 	public int getWidth() {
