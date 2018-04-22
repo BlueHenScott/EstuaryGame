@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,7 +22,7 @@ public class FishView extends JPanel{
 	
 	// Fishes
 	private ArrayList<Fish> fishList = new ArrayList<Fish>();
-	private FishImages fishImages = new FishImages();
+	private FishImages fishImages;
 	
 	// Player Variables
 	private int playerX;
@@ -42,8 +44,12 @@ public class FishView extends JPanel{
 		// Player net image;
 		String playerImageLoc = "images/fish/net.png";
 		String backgroundLoc = "images/fish/background.png";
+		
 		net = createImage(playerImageLoc);
 		background = createImage(backgroundLoc);
+	    background = scaleImage(background, viewWidth, viewHeight);
+
+		fishImages = new FishImages();
 		fishImages.importImages();
 		
 		// Remove all previous panels from the frame
@@ -51,7 +57,6 @@ public class FishView extends JPanel{
 		// Add this game to the jFrame and focus on it
 		frame.setBackground(Color.white);
 		frame.getContentPane().add(this);
-		frame.getContentPane().setBackground(Color.red);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(viewWidth, viewHeight);
 		frame.setVisible(true);
@@ -79,7 +84,7 @@ public class FishView extends JPanel{
 		g.drawImage(net, playerX, playerY, Color.black, this);
 		// Draw each fish in the list
 		for(Fish f: fishList) {
-			g.drawImage(FishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
+			g.drawImage(fishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
 		}
 		
 	}
@@ -101,39 +106,25 @@ public class FishView extends JPanel{
 		this.addKeyListener(kL);
 	}
 	
+	// Accessors
 	public int getWidth() {
 		return viewWidth;
 	}
 	public int getHeight() {
 		return viewHeight;
 	}
-}
+	
+	
+	// Scales buffered images
+	private BufferedImage scaleImage(BufferedImage img, int newWidth, int newHeight) {
+		Image tmp = img.getScaledInstance(viewWidth, viewHeight, Image.SCALE_SMOOTH);
+	    BufferedImage dimg = new BufferedImage(viewWidth, viewHeight, BufferedImage.TYPE_INT_ARGB);
 
-class FishImages{
-	static ArrayList<BufferedImage> fishImages = new ArrayList<>();
+	    Graphics2D g2d = dimg.createGraphics();
+	    g2d.drawImage(tmp, 0, 0, null);
+	    g2d.dispose();
+	    return dimg;
+	}	
 	
-	public void importImages(){
-		for (FishType ft: FishType.values()){
-			String imgLoc = "images/fish/" + ft.getName() + ".png";
-			BufferedImage img = createImage(imgLoc);
-			fishImages.add(img);
-		}
-	}
-	
-	private BufferedImage createImage(String loc){
-    	BufferedImage bufferedImage;
-    	try {
-    		bufferedImage = ImageIO.read(new File(loc));
-    		return bufferedImage;
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-    	return null;
-    	
-    }
-	
-	public static BufferedImage getImage(FishType ft){
-		return fishImages.get(ft.ordinal());
-		
-	}
+
 }
