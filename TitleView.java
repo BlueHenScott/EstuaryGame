@@ -38,7 +38,7 @@ public class TitleView extends JPanel{
 		// Set up the JFrame
 		
 		frame = new JFrame();
-		frame.setBackground(Color.CYAN);
+		frame.getContentPane().setBackground(Color.CYAN);
 		frame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
 		frame.getContentPane().add(newPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
