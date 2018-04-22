@@ -9,6 +9,8 @@ public class FishModel {
 	int topBound = 0;
 	int leftBound = 0;
 	
+	private int velocity = 5;
+	
 	public FishModel(int width, int height){
 		this.frameWidth = width;
 		this.frameHeight = height;
@@ -69,34 +71,35 @@ public class FishModel {
 
 	
 
-	public int getPlayerX() {
+	public int getNetX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return netX;
+		
 	}
 
-	public int getPlayerY() {
+	public int getNetY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return netY;
 	}
 
 	public void moveUp() {
 		// TODO Auto-generated method stub
-		
+		netY -= velocity;
 	}
 
 	public void moveLeft() {
 		// TODO Auto-generated method stub
-		
+		netX -= velocity;
 	}
 
 	public void moveRight() {
 		// TODO Auto-generated method stub
-		
+		netX += velocity;
 	}
 
 	public void moveDown() {
 		// TODO Auto-generated method stub
-		
+		netY += velocity;
 	}
 	
 	

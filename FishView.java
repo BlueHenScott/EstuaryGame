@@ -98,4 +98,11 @@ public class FishView extends JPanel{
 		this.addKeyListener(kL);
 		System.out.println("KeyListenerAdded");
 	}
+	
+	public int getWidth() {
+		return viewWidth;
+	}
+	public int getHeight() {
+		return viewHeight;
+	}
 }
