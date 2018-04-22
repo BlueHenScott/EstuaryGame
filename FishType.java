@@ -2,19 +2,19 @@
 // INCOMPLETE: need more species
 
 public enum FishType {
-	HOGCHOKER("hogchoker", 12, 0.1); // example of a type of bottom feeder
+	HOGCHOKER("hogchoker", 0.01, 0.1); // example of a type of bottom feeder
 	
 	private final String name;
-	private final int speed;
+	private final double speed;
 	private final double size;
 	
-	private FishType(final String name, int speed, double size) {
+	private FishType(final String name, double speed, double size) {
 		this.name = name;
 		this.speed = speed;
 		this.size = size;
 	}
 	
-	public int getSpeed(){
+	public double getSpeed(){
 		return speed;
 	}
 	
