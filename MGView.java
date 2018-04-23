@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MGView extends JPanel{
-	private final int viewWidth = 1500;
-	private final int viewHeight = 900;
+	private int viewWidth;
+	private int viewHeight;
 	private JFrame frame;
 	private JPanel apanel; 
 	private JPanel epanel; 
@@ -33,12 +33,14 @@ public class MGView extends JPanel{
 			e.printStackTrace();
 		}
 		
+		viewWidth = f.getWidth();
+		viewHeight = f.getHeight();
+		
 		apanel = new JPanel();
 		apanel.setLayout(new GridLayout(3,2));
 		epanel = new JPanel();
 		epanel.setLayout(new GridLayout(3,2));
-		apanel.setVisible(true);
-		epanel.setVisible(true);
+		
 		
 		frame = f;
 		f.getContentPane().removeAll();
@@ -52,15 +54,16 @@ public class MGView extends JPanel{
 		frame.setLayout(new GridLayout(1,2));
 		this.drawCards();
 		frame.getContentPane();
-		
-		
 		//frame.getContentPane().add(apanel, BorderLayout.CENTER);
 		
 		frame.add(apanel);
 		frame.add(epanel);
 
+
+		apanel.setVisible(true);
+		epanel.setVisible(true);
 		
-		
+		frame.setVisible(true);
 	}
 
 	private void drawCards() {
@@ -116,9 +119,4 @@ public class MGView extends JPanel{
 	public void addClickListener(MouseListener flip) {
 		frame.addMouseListener(flip);
 	}
-	public void refocus(){
-		frame.requestFocus();
-	}
-	
-
 }
