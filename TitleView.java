@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -36,17 +39,20 @@ public class TitleView extends JPanel{
 		// Player net image;
 		String backgroundLoc = "images/titlescreen.png";
 		background = createImage(backgroundLoc);
+		startButton.setFont(new Font("Arial", Font.PLAIN, 40));
 		
 		JPanel buttonPanel = new JPanel(new GridLayout());
 		buttonPanel.setBackground(Color.BLUE);
 	    buttonPanel.add(startButton);
 	    
 	    JPanel imagePanel = new JPanel (new GridLayout());
-	    JLabel picLabel = new JLabel(new ImageIcon(background));
+	    JLabel picLabel = new JLabel(new ImageIcon(background.getScaledInstance(viewWidth, viewHeight-175, Image.SCALE_SMOOTH)));
 	    imagePanel.add(picLabel);
 		// Add this game to the jFrame and focus on it
-		frame.getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
-		frame.getContentPane().add(imagePanel,BorderLayout.CENTER);
+	    FlowLayout experimentLayout = new FlowLayout();
+	    frame.setLayout(experimentLayout);
+		frame.getContentPane().add(imagePanel);
+		frame.getContentPane().add(buttonPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(viewWidth, viewHeight);
 		frame.setVisible(true);
