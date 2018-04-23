@@ -14,6 +14,7 @@ public class FishController {
 	private FishModel model;
 	private FishView view;
 	
+	private int score;
 	// Delay in the drawing
 	private int drawDelay = 30;
 	
@@ -43,9 +44,11 @@ public class FishController {
 		drawAction = new AbstractAction() {
 			public void actionPerformed(ActionEvent e) {
 				model.update();
-				view.update(model.getFishList(), model.getNetX(), model.getNetY());
+				view.update(model.getFishList(), model.getNetX(), model.getNetY(),score);
+				score++;
 			}
 		};
+		score = 0;
 		start();
 	}
 	// Start the cycle

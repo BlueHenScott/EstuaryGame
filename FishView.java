@@ -29,6 +29,8 @@ public class FishView extends JPanel{
 	private int playerY;
 	private BufferedImage net;
 	
+	private int score;
+	
 	// Background image
 	private BufferedImage background;
 		
@@ -66,10 +68,12 @@ public class FishView extends JPanel{
 	}
 	
 	// Update is called on ever timer tick. 
-	public void update(ArrayList<Fish> fish, int pX, int pY) {
+	public void update(ArrayList<Fish> fish, int pX, int pY, int sc) {
 		// update the player's position
 		playerX = pX;
 		playerY = pY;
+		
+		score = sc;
 		// Receive any changes made to the fish
 		fishList = fish;
 		// Repaint the frame with the new information
@@ -77,10 +81,11 @@ public class FishView extends JPanel{
 	}
 	
 	protected void paintComponent(Graphics g) {
-
 		// Draw the background image
 		g.drawImage(background, 0, 0, Color.black, this);
 		// Draw the net
+
+		g.drawString("Score: " + score , 0, 15);
 		g.drawImage(net, playerX, playerY, Color.black, this);
 		// Draw each fish in the list
 		for(Fish f: fishList) {
