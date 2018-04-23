@@ -202,31 +202,3 @@ public class Fish {
 	
 }
 
-class FishImages{
-	static ArrayList<BufferedImage> fishImages = new ArrayList<>();
-	
-	public void importImages(){
-		for (FishType ft: FishType.values()){
-			String imgLoc = "images/fish/" + ft.getName() + ".png";
-			BufferedImage img = createImage(imgLoc);
-			fishImages.add(img);
-		}
-	}
-	
-	private BufferedImage createImage(String loc){
-    	BufferedImage bufferedImage;
-    	try {
-    		bufferedImage = ImageIO.read(new File(loc));
-    		return bufferedImage;
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-    	return null;
-    	
-    }
-	
-	public static BufferedImage getImage(FishType ft){
-		return fishImages.get(ft.ordinal());
-		
-	}
-}

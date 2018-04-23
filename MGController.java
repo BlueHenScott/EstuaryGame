@@ -10,7 +10,6 @@ public class MGController {
 	
 	private MGModel model;
 	private MGView view;
-	private boolean isStarted = false;
 	
 	public MGController(JFrame frame){
 		// Create new instances of Model and View
@@ -19,16 +18,6 @@ public class MGController {
 		
 		view.addClickListener(new ClickListener());
 	}
-
-	public void start() {
-		EventQueue.invokeLater(new Runnable(){
-			public void run() {
-				
-				
-			}
-		});
-		
-	}
 	
 	class ClickListener implements MouseListener {
 
@@ -36,8 +25,7 @@ public class MGController {
 		public void mouseClicked(MouseEvent e) {
 			Point clickLocation = e.getLocationOnScreen();
 			model.flipClicked(clickLocation);
-			model.isMatch();
-			view.refocus();  
+			model.isMatch(); 
 			// TODO Auto-generated method stub
 			
 		}
