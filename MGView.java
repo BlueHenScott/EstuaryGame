@@ -37,8 +37,7 @@ public class MGView extends JPanel{
 		apanel.setLayout(new GridLayout(3,2));
 		epanel = new JPanel();
 		epanel.setLayout(new GridLayout(3,2));
-		apanel.setVisible(true);
-		epanel.setVisible(true);
+		
 		
 		frame = f;
 		f.getContentPane().removeAll();
@@ -52,15 +51,16 @@ public class MGView extends JPanel{
 		frame.setLayout(new GridLayout(1,2));
 		this.drawCards();
 		frame.getContentPane();
-		
-		
 		//frame.getContentPane().add(apanel, BorderLayout.CENTER);
 		
 		frame.add(apanel);
 		frame.add(epanel);
 
+
+		apanel.setVisible(true);
+		epanel.setVisible(true);
 		
-		
+		frame.repaint();
 	}
 
 	private void drawCards() {
@@ -116,9 +116,4 @@ public class MGView extends JPanel{
 	public void addClickListener(MouseListener flip) {
 		frame.addMouseListener(flip);
 	}
-	public void refocus(){
-		frame.requestFocus();
-	}
-	
-
 }

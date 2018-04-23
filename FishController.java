@@ -20,15 +20,18 @@ public class FishController {
 	// Action to be completed in the timer
 	private Action drawAction;
 	
+	// Timer
+	Timer timer;
 	
-	public FishController() {
+	JFrame frame;
+	
+	public FishController(JFrame f) {
 		/*
 		 * TO-DO
 		 * grab frame from titleScreen
 		 */
 		
-		JFrame frame;
-		frame = new JFrame();
+		frame = f;
 		
 		// Initialize model and view, passing in our frame
 		view = new FishView(frame);
@@ -49,8 +52,8 @@ public class FishController {
 	public void start() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				Timer t = new Timer(drawDelay, drawAction);
-				t.start();
+				timer = new Timer(drawDelay, drawAction);
+				timer.start();
 			}
 		});
 	}
@@ -59,6 +62,7 @@ public class FishController {
 		@Override
 		public void keyPressed(KeyEvent keyEvent) {
 			int code = keyEvent.getKeyCode();
+			System.out.println(code);
 			switch (code) {
 				case 38:
 					model.moveUp();
@@ -72,6 +76,9 @@ public class FishController {
 				case 40:
 					model.moveDown();
 					break;
+				case 10:
+					timer.stop();
+					MGController mgCon = new MGController(frame);
 				default:
 					break;
 			}

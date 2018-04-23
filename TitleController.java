@@ -21,8 +21,8 @@ public class TitleController {
 	class StartListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			isStarted = !isStarted;
-			MGController mgCon = new MGController(frame);
+			FishController fgCon = new FishController(frame);
+			fgCon.start();
 		}
-
 	}
 }

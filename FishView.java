@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class FishView extends JPanel{	
 	// Constants for View Size
-	private int viewWidth = 800;
-	private int viewHeight = 500;
+	private int viewWidth;
+	private int viewHeight;
 	
 	JFrame frame;
 	
@@ -38,8 +38,8 @@ public class FishView extends JPanel{
 	public FishView(JFrame f) {
 		frame = f;
 		
-		//viewWidth = frame.getWidth();
-		//viewHeight = frame.getHeight();
+		viewWidth = frame.getWidth();
+		viewHeight = frame.getHeight();
 		
 		// Player net image;
 		String playerImageLoc = "images/fish/net.png";
