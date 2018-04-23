@@ -52,5 +52,16 @@ public class TitleView extends JPanel{
     public void addStartListener(ActionListener start) {
     	startButton.addActionListener(start);
     }
+	// Reads in images
+	private BufferedImage createImage(String loc) {
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(new File(loc));
+			return bufferedImage;
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
 
