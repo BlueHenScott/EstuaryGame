@@ -84,7 +84,7 @@ public class FishView extends JPanel{
 		g.drawImage(net, playerX, playerY, Color.black, this);
 		// Draw each fish in the list
 		for(Fish f: fishList) {
-			g.drawImage(fishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
+			g.drawImage(FishImages.getImage(f.getSpecies()), f.getXLoc(), f.getYLoc(), Color.black, this);
 		}
 		
 	}
