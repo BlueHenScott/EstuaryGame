@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MGView extends JPanel{
-	private final int viewWidth = 1500;
-	private final int viewHeight = 900;
+	private int viewWidth;
+	private int viewHeight;
 	private JFrame frame;
 	private JPanel apanel; 
 	private JPanel epanel; 
@@ -32,6 +32,9 @@ public class MGView extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		viewWidth = f.getWidth();
+		viewHeight = f.getHeight();
 		
 		apanel = new JPanel();
 		apanel.setLayout(new GridLayout(3,2));
