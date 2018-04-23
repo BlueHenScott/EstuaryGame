@@ -63,7 +63,7 @@ public class MGView extends JPanel{
 		apanel.setVisible(true);
 		epanel.setVisible(true);
 		
-		frame.repaint();
+		frame.setVisible(true);
 	}
 
 	private void drawCards() {
