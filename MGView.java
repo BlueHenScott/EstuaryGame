@@ -48,7 +48,6 @@ public class MGView extends JPanel{
 		frame.setBackground(Color.gray);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    		frame.setSize(viewWidth, viewHeight);
-		frame.setVisible(true);
 		frame.setFocusable(true);
 		
 		frame.setLayout(new GridLayout(1,2));

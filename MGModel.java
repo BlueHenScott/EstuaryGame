@@ -233,11 +233,4 @@ public class MGModel {
 		return c;
 		
 	}
-	
-	
-	
-	
-	
-	
-
 }
